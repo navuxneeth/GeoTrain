@@ -607,10 +607,619 @@ const indianCities = [
             "Educational hub with IIT Indore and IIM Indore",
             "Famous for its street food, especially poha and jalebi"
         ]
+    },
+    {
+        name: "Surat",
+        state: "Gujarat",
+        population: "4,467,797 (2011 Census)",
+        description: "Surat is known as the diamond capital of the world and is a major textile hub.",
+        coordinates: [21.1702, 72.8311],
+        funFacts: [
+            "Processes 90% of the world's diamonds",
+            "Known as the 'Diamond City of India'",
+            "One of the fastest growing cities in the world"
+        ]
+    },
+    {
+        name: "Jamshedpur",
+        state: "Jharkhand",
+        population: "629,659 (2011 Census)",
+        description: "Jamshedpur is India's first planned industrial city, founded by Jamsetji Tata.",
+        coordinates: [22.8046, 86.2029],
+        funFacts: [
+            "First planned industrial city in India",
+            "Founded by industrialist Jamsetji Tata",
+            "No municipal corporation - managed by Tata Steel"
+        ]
+    },
+    {
+        name: "Patna",
+        state: "Bihar",
+        population: "1,684,222 (2011 Census)",
+        description: "Patna is one of the oldest continuously inhabited cities in the world.",
+        coordinates: [25.5941, 85.1376],
+        funFacts: [
+            "Over 2,500 years old",
+            "Ancient name was Pataliputra, capital of Mauryan Empire",
+            "Birthplace of Guru Gobind Singh, the tenth Sikh Guru"
+        ]
+    },
+    {
+        name: "Thiruvananthapuram",
+        state: "Kerala",
+        population: "957,730 (2011 Census)",
+        description: "The capital of Kerala, known for its historic temples and beaches.",
+        coordinates: [8.5241, 76.9366],
+        funFacts: [
+            "Padmanabhaswamy Temple has immense treasure",
+            "Home to India's first IT park, Technopark",
+            "Built on seven hills like Rome"
+        ]
+    },
+    {
+        name: "Nagpur",
+        state: "Maharashtra",
+        population: "2,405,421 (2011 Census)",
+        description: "Nagpur is the geographical center of India and known for oranges.",
+        coordinates: [21.1458, 79.0882],
+        funFacts: [
+            "Called the 'Orange City' for its orange cultivation",
+            "Geographical center of India",
+            "Second capital of Maharashtra (winter session)"
+        ]
+    },
+    {
+        name: "Bhopal",
+        state: "Madhya Pradesh",
+        population: "1,798,218 (2011 Census)",
+        description: "Bhopal is the capital of Madhya Pradesh, known as the 'City of Lakes'.",
+        coordinates: [23.2599, 77.4126],
+        funFacts: [
+            "Known as the 'City of Lakes'",
+            "Has the largest mosque in India - Taj-ul-Masjid",
+            "Greenest city in India with extensive forest cover"
+        ]
+    },
+    {
+        name: "Udaipur",
+        state: "Rajasthan",
+        population: "451,735 (2011 Census)",
+        description: "Udaipur is known as the 'City of Lakes' and 'Venice of the East'.",
+        coordinates: [24.5854, 73.7125],
+        funFacts: [
+            "Called the 'Venice of the East'",
+            "City Palace is one of the largest palace complexes in Rajasthan",
+            "Popular filming location for many Bollywood movies"
+        ]
+    },
+    {
+        name: "Madurai",
+        state: "Tamil Nadu",
+        population: "1,017,865 (2011 Census)",
+        description: "Madurai is one of the oldest cities in India, known for the Meenakshi Temple.",
+        coordinates: [9.9252, 78.1198],
+        funFacts: [
+            "Over 2,500 years old",
+            "Meenakshi Temple has 14 towers (gopurams)",
+            "Known as the 'Athens of the East'"
+        ]
+    },
+    {
+        name: "Shimla",
+        state: "Himachal Pradesh",
+        population: "169,578 (2011 Census)",
+        description: "Shimla was the summer capital of British India and is a popular hill station.",
+        coordinates: [31.1048, 77.1734],
+        funFacts: [
+            "Summer capital of British India",
+            "Toy train is a UNESCO World Heritage Site",
+            "Ridge and Mall Road are iconic tourist spots"
+        ]
+    },
+    {
+        name: "Rishikesh",
+        state: "Uttarakhand",
+        population: "102,138 (2011 Census)",
+        description: "Rishikesh is known as the 'Yoga Capital of the World'.",
+        coordinates: [30.0869, 78.2676],
+        funFacts: [
+            "Called the 'Yoga Capital of the World'",
+            "The Beatles visited Maharishi Mahesh Yogi's ashram here",
+            "Gateway to the Himalayas and Char Dham pilgrimage"
+        ]
+    }
+];
+
+// Indian Landmarks and Monuments Data
+const indianLandmarks = [
+    {
+        name: "Taj Mahal",
+        location: "Agra, Uttar Pradesh",
+        type: "Monument",
+        description: "The Taj Mahal is an ivory-white marble mausoleum, one of the Seven Wonders of the World.",
+        coordinates: [27.1751, 78.0421],
+        funFacts: [
+            "Built by Emperor Shah Jahan for his wife Mumtaz Mahal",
+            "Took 22 years to build (1632-1653)",
+            "Changes color depending on the time of day",
+            "UNESCO World Heritage Site since 1983"
+        ]
+    },
+    {
+        name: "Red Fort",
+        location: "Delhi",
+        type: "Fort",
+        description: "The Red Fort served as the main residence of Mughal emperors for nearly 200 years.",
+        coordinates: [28.6562, 77.2410],
+        funFacts: [
+            "Built by Shah Jahan in 1648",
+            "India's Prime Minister gives Independence Day speech here",
+            "Made of red sandstone",
+            "UNESCO World Heritage Site"
+        ]
+    },
+    {
+        name: "Gateway of India",
+        location: "Mumbai, Maharashtra",
+        type: "Monument",
+        description: "An arch-monument built to commemorate the visit of King George V and Queen Mary.",
+        coordinates: [18.9220, 72.8347],
+        funFacts: [
+            "Built in 1924",
+            "Last British troops departed from here in 1948",
+            "Combines Hindu and Muslim architectural styles",
+            "Most photographed monument in Mumbai"
+        ]
+    },
+    {
+        name: "Qutub Minar",
+        location: "Delhi",
+        type: "Tower",
+        description: "A 73-meter tall minaret and UNESCO World Heritage Site.",
+        coordinates: [28.5244, 77.1855],
+        funFacts: [
+            "Tallest brick minaret in the world",
+            "Built in 1193 by Qutb-ud-din Aibak",
+            "Has 379 steps to the top",
+            "Made of red sandstone and marble"
+        ]
+    },
+    {
+        name: "Hawa Mahal",
+        location: "Jaipur, Rajasthan",
+        type: "Palace",
+        description: "The Palace of Winds is a five-story palace with 953 small windows.",
+        coordinates: [26.9239, 75.8267],
+        funFacts: [
+            "Built in 1799 by Maharaja Sawai Pratap Singh",
+            "953 windows called 'jharokhas'",
+            "Built so royal women could observe street life",
+            "Shaped like the crown of Lord Krishna"
+        ]
+    },
+    {
+        name: "Golden Temple",
+        location: "Amritsar, Punjab",
+        type: "Temple",
+        description: "The holiest Gurdwara of Sikhism, covered in gold.",
+        coordinates: [31.6200, 74.8765],
+        funFacts: [
+            "Also known as Harmandir Sahib",
+            "Covered with 750 kg of gold",
+            "Feeds 100,000 people daily for free",
+            "Foundation laid by a Muslim saint"
+        ]
+    },
+    {
+        name: "Victoria Memorial",
+        location: "Kolkata, West Bengal",
+        type: "Museum",
+        description: "A large marble building dedicated to Queen Victoria.",
+        coordinates: [22.5448, 88.3426],
+        funFacts: [
+            "Built between 1906 and 1921",
+            "Made of white Makrana marble",
+            "Houses 28,394 artifacts",
+            "Set in 64 acres of gardens"
+        ]
+    },
+    {
+        name: "Charminar",
+        location: "Hyderabad, Telangana",
+        type: "Monument",
+        description: "A mosque and monument with four grand arches.",
+        coordinates: [17.3616, 78.4747],
+        funFacts: [
+            "Built in 1591 by Sultan Muhammad Quli Qutb Shah",
+            "Name means 'Four Towers'",
+            "Built to commemorate the end of a plague",
+            "Symbol of Hyderabad"
+        ]
+    },
+    {
+        name: "Meenakshi Temple",
+        location: "Madurai, Tamil Nadu",
+        type: "Temple",
+        description: "A historic Hindu temple dedicated to Goddess Meenakshi.",
+        coordinates: [9.9195, 78.1193],
+        funFacts: [
+            "Has 14 magnificent gopurams (gateway towers)",
+            "Tallest tower is 52 meters high",
+            "Attracts 15,000 visitors daily",
+            "Over 33,000 sculptures"
+        ]
+    },
+    {
+        name: "Ajanta Caves",
+        location: "Aurangabad, Maharashtra",
+        type: "Caves",
+        description: "Rock-cut Buddhist cave monuments with paintings and sculptures.",
+        coordinates: [20.5519, 75.7033],
+        funFacts: [
+            "Created between 2nd century BCE and 6th century CE",
+            "30 rock-cut Buddhist cave monuments",
+            "UNESCO World Heritage Site",
+            "Rediscovered in 1819 by British officer"
+        ]
+    },
+    {
+        name: "Konark Sun Temple",
+        location: "Konark, Odisha",
+        type: "Temple",
+        description: "A 13th-century temple dedicated to the Sun God Surya.",
+        coordinates: [19.8876, 86.0945],
+        funFacts: [
+            "Built in the 13th century",
+            "Designed as a giant chariot with 24 wheels",
+            "UNESCO World Heritage Site",
+            "Also known as the 'Black Pagoda'"
+        ]
+    },
+    {
+        name: "Mysore Palace",
+        location: "Mysore, Karnataka",
+        type: "Palace",
+        description: "The official residence of the Wadiyar dynasty and seat of the Kingdom of Mysore.",
+        coordinates: [12.3051, 76.6551],
+        funFacts: [
+            "Attracts more visitors than the Taj Mahal",
+            "Illuminated with 97,000 light bulbs on Sundays",
+            "Built in Indo-Saracenic style",
+            "Completed in 1912"
+        ]
+    },
+    {
+        name: "India Gate",
+        location: "Delhi",
+        type: "War Memorial",
+        description: "A war memorial dedicated to soldiers who died in World War I.",
+        coordinates: [28.6129, 77.2295],
+        funFacts: [
+            "Built in 1931",
+            "42 meters tall",
+            "Names of 13,300 soldiers inscribed",
+            "Amar Jawan Jyoti flame burns underneath"
+        ]
+    },
+    {
+        name: "Khajuraho Temples",
+        location: "Khajuraho, Madhya Pradesh",
+        type: "Temple Complex",
+        description: "Famous for their erotic sculptures and intricate architecture.",
+        coordinates: [24.8318, 79.9199],
+        funFacts: [
+            "Built between 950 and 1050 CE",
+            "UNESCO World Heritage Site",
+            "Originally 85 temples, 25 survive today",
+            "Famous for erotic sculptures"
+        ]
+    },
+    {
+        name: "Hampi Monuments",
+        location: "Hampi, Karnataka",
+        type: "Historical Site",
+        description: "Ruins of the Vijayanagara Empire, a UNESCO World Heritage Site.",
+        coordinates: [15.3350, 76.4600],
+        funFacts: [
+            "Capital of Vijayanagara Empire",
+            "UNESCO World Heritage Site",
+            "Over 1,600 monuments",
+            "One of the richest cities in the 16th century"
+        ]
+    },
+    {
+        name: "Statue of Unity",
+        location: "Kevadia, Gujarat",
+        type: "Statue",
+        description: "The world's tallest statue, dedicated to Sardar Vallabhbhai Patel.",
+        coordinates: [21.8380, 73.7191],
+        funFacts: [
+            "World's tallest statue at 182 meters",
+            "Inaugurated in 2018",
+            "Used 70,000 tonnes of cement and 25,000 tonnes of steel",
+            "Twice as tall as the Statue of Liberty"
+        ]
+    },
+    {
+        name: "Jagannath Temple",
+        location: "Puri, Odisha",
+        type: "Temple",
+        description: "A sacred Hindu temple dedicated to Lord Jagannath.",
+        coordinates: [19.8135, 85.8312],
+        funFacts: [
+            "One of the four sacred Char Dham pilgrimage sites",
+            "Famous annual Rath Yatra (chariot festival)",
+            "The word 'Juggernaut' derives from Jagannath",
+            "Flag atop temple always flaps in opposite direction to wind"
+        ]
+    },
+    {
+        name: "Elephanta Caves",
+        location: "Mumbai, Maharashtra",
+        type: "Caves",
+        description: "Rock-cut cave temples dedicated to Lord Shiva.",
+        coordinates: [18.9633, 72.9315],
+        funFacts: [
+            "UNESCO World Heritage Site",
+            "Contains Hindu and Buddhist sculptures",
+            "Famous Trimurti sculpture of Shiva",
+            "Located on Elephanta Island"
+        ]
+    }
+];
+
+// Major Rivers and Geographical Features
+const indianRivers = [
+    {
+        name: "Ganges (Ganga)",
+        length: "2,525 km",
+        type: "River",
+        description: "The holiest river in Hinduism, flowing from the Himalayas to the Bay of Bengal.",
+        coordinates: [25.3176, 82.9739],
+        funFacts: [
+            "Longest river in India",
+            "Originates from Gangotri Glacier in Uttarakhand",
+            "Supports 43% of India's population",
+            "Has over 140 fish species"
+        ]
+    },
+    {
+        name: "Brahmaputra",
+        length: "2,900 km (in India: 916 km)",
+        type: "River",
+        description: "One of the major rivers of Asia, flows through Tibet, India, and Bangladesh.",
+        coordinates: [26.1445, 91.7362],
+        funFacts: [
+            "Only Indian river referred to with masculine name",
+            "Forms the world's largest delta with Ganges",
+            "Home to river dolphins",
+            "Called 'Yarlung Tsangpo' in Tibet"
+        ]
+    },
+    {
+        name: "Yamuna",
+        length: "1,376 km",
+        type: "River",
+        description: "The longest tributary of the Ganges, flowing through Delhi and Agra.",
+        coordinates: [25.4358, 81.8463],
+        funFacts: [
+            "Longest tributary of Ganges",
+            "Originates from Yamunotri Glacier",
+            "Flows through the cities of Delhi and Agra",
+            "Taj Mahal is located on its banks"
+        ]
+    },
+    {
+        name: "Godavari",
+        length: "1,465 km",
+        type: "River",
+        description: "The second longest river in India, known as 'Dakshin Ganga'.",
+        coordinates: [16.7333, 81.6667],
+        funFacts: [
+            "Second longest river in India",
+            "Called 'Dakshin Ganga' (Ganges of South)",
+            "Flows through Maharashtra, Telangana, and Andhra Pradesh",
+            "Forms one of the largest river basins"
+        ]
+    },
+    {
+        name: "Narmada",
+        length: "1,312 km",
+        type: "River",
+        description: "The largest west-flowing river of peninsular India.",
+        coordinates: [21.7000, 73.0167],
+        funFacts: [
+            "Largest west-flowing river in India",
+            "Flows through a rift valley",
+            "Mentioned in ancient texts like Ramayana",
+            "Sardar Sarovar Dam is built on this river"
+        ]
+    },
+    {
+        name: "Krishna",
+        length: "1,400 km",
+        type: "River",
+        description: "The fourth-longest river in India, flowing through Maharashtra, Karnataka, and Andhra Pradesh.",
+        coordinates: [16.0000, 80.6167],
+        funFacts: [
+            "Fourth-longest river in India",
+            "Originates near Mahabaleshwar in Maharashtra",
+            "Important for irrigation in the Deccan region",
+            "Meets the Bay of Bengal"
+        ]
+    },
+    {
+        name: "Western Ghats",
+        length: "1,600 km mountain range",
+        type: "Mountain Range",
+        description: "A biodiversity hotspot and UNESCO World Heritage Site.",
+        coordinates: [11.0000, 76.0000],
+        funFacts: [
+            "UNESCO World Heritage Site",
+            "One of eight 'hottest hotspots' of biodiversity",
+            "Influences Indian monsoon weather patterns",
+            "Home to 325 globally threatened species"
+        ]
+    },
+    {
+        name: "Himalayan Range",
+        length: "2,400 km (in India)",
+        type: "Mountain Range",
+        description: "The highest mountain range in the world, home to Mount Everest.",
+        coordinates: [28.0000, 84.0000],
+        funFacts: [
+            "Highest mountain range in the world",
+            "Has 10 of the world's 14 peaks above 8,000m",
+            "Forms India's northern border",
+            "Source of major rivers like Ganges and Brahmaputra"
+        ]
+    },
+    {
+        name: "Thar Desert",
+        length: "200,000 sq km",
+        type: "Desert",
+        description: "The largest desert in India, located in Rajasthan.",
+        coordinates: [27.0000, 71.0000],
+        funFacts: [
+            "Also called the Great Indian Desert",
+            "Seventh largest desert in the world",
+            "Most densely populated desert in the world",
+            "Home to unique wildlife including Great Indian Bustard"
+        ]
+    },
+    {
+        name: "Sundarbans",
+        length: "10,000 sq km",
+        type: "Mangrove Forest",
+        description: "The largest mangrove forest and home to the Royal Bengal Tiger.",
+        coordinates: [21.9497, 89.1833],
+        funFacts: [
+            "Largest mangrove forest in the world",
+            "UNESCO World Heritage Site",
+            "Home to Royal Bengal Tigers",
+            "Named after the Sundari trees"
+        ]
+    }
+];
+
+// Difficulty levels configuration
+const difficultyLevels = {
+    easy: {
+        name: "Easy",
+        pointsMultiplier: 1,
+        timeLimit: null, // No time limit
+        hintsAvailable: 3
+    },
+    medium: {
+        name: "Medium",
+        pointsMultiplier: 2,
+        timeLimit: 30, // 30 seconds
+        hintsAvailable: 2
+    },
+    hard: {
+        name: "Hard",
+        pointsMultiplier: 3,
+        timeLimit: 15, // 15 seconds
+        hintsAvailable: 1
+    }
+};
+
+// Achievements system
+const achievements = [
+    {
+        id: "first_state",
+        name: "First Steps",
+        description: "Master your first state",
+        icon: "🎯",
+        condition: (progress) => progress.statesMastered.length >= 1
+    },
+    {
+        id: "five_states",
+        name: "Geography Enthusiast",
+        description: "Master 5 states",
+        icon: "🌟",
+        condition: (progress) => progress.statesMastered.length >= 5
+    },
+    {
+        id: "all_states",
+        name: "State Master",
+        description: "Master all 28 states",
+        icon: "👑",
+        condition: (progress) => progress.statesMastered.length >= 28
+    },
+    {
+        id: "first_city",
+        name: "Urban Explorer",
+        description: "Discover your first city",
+        icon: "🏙️",
+        condition: (progress) => progress.citiesDiscovered.length >= 1
+    },
+    {
+        id: "ten_cities",
+        name: "City Navigator",
+        description: "Discover 10 cities",
+        icon: "🗺️",
+        condition: (progress) => progress.citiesDiscovered.length >= 10
+    },
+    {
+        id: "all_cities",
+        name: "City Expert",
+        description: "Discover all cities",
+        icon: "🏆",
+        condition: (progress) => progress.citiesDiscovered.length >= 30
+    },
+    {
+        id: "landmark_explorer",
+        name: "Monument Hunter",
+        description: "Learn about 5 landmarks",
+        icon: "🏛️",
+        condition: (progress) => (progress.landmarksLearned || []).length >= 5
+    },
+    {
+        id: "river_expert",
+        name: "River Expert",
+        description: "Master all rivers and geographical features",
+        icon: "💧",
+        condition: (progress) => (progress.riversLearned || []).length >= 10
+    },
+    {
+        id: "high_scorer",
+        name: "High Achiever",
+        description: "Score 1000 points",
+        icon: "💯",
+        condition: (progress) => progress.totalScore >= 1000
+    },
+    {
+        id: "streak_master",
+        name: "Streak Master",
+        description: "Get 10 correct answers in a row",
+        icon: "🔥",
+        condition: (progress) => (progress.maxStreak || 0) >= 10
+    },
+    {
+        id: "speed_demon",
+        name: "Speed Demon",
+        description: "Complete 20 timed challenges",
+        icon: "⚡",
+        condition: (progress) => (progress.timedChallenges || 0) >= 20
+    },
+    {
+        id: "perfectionist",
+        name: "Perfectionist",
+        description: "Complete a level with 100% accuracy",
+        icon: "✨",
+        condition: (progress) => (progress.perfectLevels || 0) >= 1
     }
 ];
 
 // Export data for use in app.js
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { indianStates, indianCities };
+    module.exports = { 
+        indianStates, 
+        indianCities, 
+        indianLandmarks, 
+        indianRivers,
+        difficultyLevels,
+        achievements
+    };
 }
