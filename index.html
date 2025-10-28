@@ -13,6 +13,7 @@
         <div class="container">
             <h1>🌍 GeoTrain</h1>
             <p class="tagline">Master India's Geography Through Interactive Learning</p>
+            <button id="dark-mode-toggle" class="dark-mode-btn" title="Toggle Dark Mode">🌙</button>
         </div>
     </header>
 
@@ -38,6 +39,20 @@
                         <p>Explore popular cities and discover fun facts</p>
                         <button class="btn-primary">Start</button>
                     </div>
+
+                    <div class="game-mode-card" data-mode="landmarks">
+                        <div class="icon">🏛️</div>
+                        <h3>Famous Landmarks</h3>
+                        <p>Identify iconic monuments and historical sites</p>
+                        <button class="btn-primary">Start</button>
+                    </div>
+                    
+                    <div class="game-mode-card" data-mode="rivers">
+                        <div class="icon">💧</div>
+                        <h3>Rivers & Geography</h3>
+                        <p>Learn about major rivers and geographical features</p>
+                        <button class="btn-primary">Start</button>
+                    </div>
                 </div>
 
                 <!-- Progress Summary -->
@@ -50,26 +65,81 @@
                         </div>
                         <div class="stat">
                             <span class="stat-label">Cities Discovered</span>
-                            <span class="stat-value" id="cities-discovered">0/20</span>
+                            <span class="stat-value" id="cities-discovered">0/30</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Landmarks Learned</span>
+                            <span class="stat-value" id="landmarks-learned">0/18</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rivers Learned</span>
+                            <span class="stat-value" id="rivers-learned">0/10</span>
                         </div>
                         <div class="stat">
                             <span class="stat-label">Total Score</span>
                             <span class="stat-value" id="total-score">0</span>
                         </div>
+                        <div class="stat">
+                            <span class="stat-label">Max Streak</span>
+                            <span class="stat-value" id="max-streak">0</span>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Achievements Section -->
+                <div class="achievements-section">
+                    <h3>🏆 Achievements</h3>
+                    <div id="achievements-container" class="achievements-grid"></div>
+                    <button id="view-all-achievements" class="btn-secondary">View All Achievements</button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button id="view-stats-btn" class="btn-secondary">📊 Detailed Statistics</button>
+                    <button id="export-progress-btn" class="btn-secondary">📥 Export Progress</button>
+                    <button id="reset-progress-btn" class="btn-danger">🔄 Reset Progress</button>
                 </div>
             </div>
         </div>
 
         <!-- Game Screen -->
         <div id="game-screen" class="screen">
+            <!-- Difficulty Selection Modal -->
+            <div id="difficulty-modal" class="modal">
+                <div class="modal-content">
+                    <h2>Select Difficulty</h2>
+                    <div class="difficulty-options">
+                        <div class="difficulty-card" data-difficulty="easy">
+                            <div class="difficulty-icon">😊</div>
+                            <h3>Easy</h3>
+                            <p>No time limit • 3 hints • 1x points</p>
+                            <button class="btn-primary">Select</button>
+                        </div>
+                        <div class="difficulty-card" data-difficulty="medium">
+                            <div class="difficulty-icon">🤔</div>
+                            <h3>Medium</h3>
+                            <p>30s time limit • 2 hints • 2x points</p>
+                            <button class="btn-primary">Select</button>
+                        </div>
+                        <div class="difficulty-card" data-difficulty="hard">
+                            <div class="difficulty-icon">🔥</div>
+                            <h3>Hard</h3>
+                            <p>15s time limit • 1 hint • 3x points</p>
+                            <button class="btn-primary">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="game-header">
                 <button id="back-btn" class="btn-secondary">← Back</button>
                 <div class="game-info">
                     <span id="game-mode-title">Which State Is This?</span>
                     <span id="level-info">Level 1</span>
+                    <span id="difficulty-badge" class="badge">Easy</span>
                 </div>
                 <div class="score-info">
+                    <span id="streak-display" class="streak-counter">🔥 Streak: <span id="streak-count">0</span></span>
                     <span>Score: <span id="current-score">0</span></span>
                 </div>
             </div>
@@ -87,14 +157,26 @@
                 <!-- Question and Info Panel -->
                 <div class="info-panel">
                     <div id="question-section">
+                        <div class="timer-container" id="timer-container" style="display: none;">
+                            <div class="timer-circle">
+                                <span id="timer-text">30</span>
+                            </div>
+                        </div>
                         <h2 id="question-text">Identify the highlighted state</h2>
+                        <div class="hint-section">
+                            <button id="hint-btn" class="btn-hint" style="display: none;">💡 Use Hint (<span id="hints-remaining">3</span> left)</button>
+                            <div id="hint-text" class="hint-display" style="display: none;"></div>
+                        </div>
                         <div id="choices-container" class="choices"></div>
                     </div>
 
                     <div id="info-section" style="display: none;">
                         <h2 id="info-title"></h2>
                         <div id="info-content"></div>
-                        <button id="next-btn" class="btn-primary">Next Question</button>
+                        <div class="info-actions">
+                            <button id="next-btn" class="btn-primary">Next Question</button>
+                            <button id="level-summary-btn" class="btn-secondary" style="display: none;">View Level Summary</button>
+                        </div>
                     </div>
 
                     <div id="feedback-section" style="display: none;">
@@ -103,7 +185,67 @@
                 </div>
             </div>
         </div>
+
+        <!-- Statistics Screen -->
+        <div id="stats-screen" class="screen">
+            <div class="stats-container">
+                <div class="stats-header">
+                    <h2>📊 Detailed Statistics</h2>
+                    <button id="close-stats-btn" class="btn-secondary">← Back to Home</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Overall Progress</h3>
+                        <canvas id="progress-chart"></canvas>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Game Statistics</h3>
+                        <div id="game-stats-content"></div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Achievements</h3>
+                        <div id="stats-achievements"></div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Performance</h3>
+                        <div id="performance-stats"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Modal -->
+        <div id="achievements-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🏆 All Achievements</h2>
+                    <button class="close-modal">×</button>
+                </div>
+                <div id="all-achievements-grid" class="achievements-grid-full"></div>
+            </div>
+        </div>
+
+        <!-- Achievement Unlocked Notification -->
+        <div id="achievement-notification" class="achievement-popup" style="display: none;">
+            <div class="achievement-content">
+                <div class="achievement-icon-large"></div>
+                <h3>Achievement Unlocked!</h3>
+                <p class="achievement-name"></p>
+                <p class="achievement-desc"></p>
+            </div>
+        </div>
     </div>
+
+    <!-- Audio for sound effects -->
+    <audio id="correct-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRhwAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=" type="audio/wav">
+    </audio>
+    <audio id="wrong-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRhwAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=" type="audio/wav">
+    </audio>
+    <audio id="achievement-sound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRhwAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=" type="audio/wav">
+    </audio>
 
     <!-- Scripts -->
     <script src="libs/leaflet/leaflet.js"></script>
