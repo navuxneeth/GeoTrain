@@ -492,7 +492,7 @@ class NaviNationGame {
     resetProgress() {
         if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
             localStorage.removeItem('naviNationProgress');
-            localStorage.removeItem('geoTrainProgress'); // Also remove old key if it exists
+            localStorage.removeItem('geoTrainProgress'); // Clean up old key if it still exists
             localStorage.removeItem('darkMode');
             localStorage.removeItem('soundEnabled');
             location.reload();
