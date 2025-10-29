@@ -1,5 +1,5 @@
 // Game State Management
-class GeoTrainGame {
+class NaviNationGame {
     constructor() {
         this.currentMode = null;
         this.currentLevel = 1;
@@ -31,6 +31,26 @@ class GeoTrainGame {
     }
 
     initializeUI() {
+        // Sound toggle
+        document.getElementById('sound-toggle').addEventListener('click', () => {
+            this.toggleSound();
+        });
+
+        // Dark mode toggle
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            this.toggleDarkMode();
+        });
+
+        // Help toggle
+        document.getElementById('help-toggle').addEventListener('click', () => {
+            this.showHelp();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            this.handleKeyboardShortcut(e);
+        });
+
         // Game mode selection
         document.querySelectorAll('.game-mode-card button').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -64,11 +84,6 @@ class GeoTrainGame {
 
         document.getElementById('reset-view').addEventListener('click', () => {
             this.resetMapView();
-        });
-
-        // Dark mode toggle
-        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
-            this.toggleDarkMode();
         });
 
         // Hint button
@@ -129,6 +144,86 @@ class GeoTrainGame {
         localStorage.setItem('darkMode', isDark);
         const btn = document.getElementById('dark-mode-toggle');
         btn.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    toggleSound() {
+        this.soundEnabled = !this.soundEnabled;
+        localStorage.setItem('soundEnabled', this.soundEnabled);
+        const btn = document.getElementById('sound-toggle');
+        btn.textContent = this.soundEnabled ? '🔊' : '🔇';
+        
+        // Provide visual feedback
+        btn.classList.add('zoom-in');
+        setTimeout(() => btn.classList.remove('zoom-in'), 500);
+    }
+
+    showHelp() {
+        document.getElementById('help-modal').classList.add('active');
+    }
+
+    handleKeyboardShortcut(e) {
+        // Don't trigger shortcuts if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        // Keyboard shortcuts
+        switch(e.key.toLowerCase()) {
+            case 'd':
+                // Toggle dark mode with 'D' key
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    this.toggleDarkMode();
+                }
+                break;
+            case 's':
+                // Toggle sound with 'S' key
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    this.toggleSound();
+                }
+                break;
+            case 'h':
+                // Use hint with 'H' key (only in game)
+                if (this.currentQuestion && this.hintsRemaining > 0) {
+                    e.preventDefault();
+                    this.useHint();
+                }
+                break;
+            case 'escape':
+                // Close modals with ESC key
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                break;
+            case '?':
+                // Show help with ? key
+                e.preventDefault();
+                this.showHelp();
+                break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+                // Select answer with number keys (1-4)
+                if (this.currentQuestion) {
+                    const choices = document.querySelectorAll('.choice-btn:not(:disabled)');
+                    const index = parseInt(e.key) - 1;
+                    if (index >= 0 && index < choices.length) {
+                        e.preventDefault();
+                        choices[index].click();
+                    }
+                }
+                break;
+            case 'enter':
+                // Next question with Enter key
+                const nextBtn = document.getElementById('next-btn');
+                if (nextBtn && nextBtn.offsetParent !== null) { // Check if visible
+                    e.preventDefault();
+                    nextBtn.click();
+                }
+                break;
+        }
     }
 
     useHint() {
@@ -389,15 +484,17 @@ class GeoTrainGame {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `geotrain-progress-${new Date().toISOString().split('T')[0]}.json`;
+        a.download = `navination-progress-${new Date().toISOString().split('T')[0]}.json`;
         a.click();
         URL.revokeObjectURL(url);
     }
 
     resetProgress() {
         if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
-            localStorage.removeItem('geoTrainProgress');
+            localStorage.removeItem('naviNationProgress');
+            localStorage.removeItem('geoTrainProgress'); // Clean up old key if it still exists
             localStorage.removeItem('darkMode');
+            localStorage.removeItem('soundEnabled');
             location.reload();
         }
     }
@@ -639,7 +736,7 @@ class GeoTrainGame {
         this.progress.totalQuestionsAnswered++;
 
         if (isCorrect) {
-            button.classList.add('correct');
+            button.classList.add('correct', 'zoom-in');
             this.correctAnswers++;
             this.levelStats.correct++;
             this.progress.totalCorrectAnswers++;
@@ -694,7 +791,7 @@ class GeoTrainGame {
             this.saveProgress();
             this.checkAchievements();
         } else {
-            button.classList.add('incorrect');
+            button.classList.add('incorrect', 'shake');
             this.currentStreak = 0;
             this.playSound('wrong');
             
@@ -833,10 +930,24 @@ class GeoTrainGame {
     }
 
     loadProgress() {
-        const saved = localStorage.getItem('geoTrainProgress');
+        // First try to load from new key
+        let saved = localStorage.getItem('naviNationProgress');
+        
+        // If not found, try to migrate from old key
+        if (!saved) {
+            const oldSaved = localStorage.getItem('geoTrainProgress');
+            if (oldSaved) {
+                // Migrate old data to new key
+                localStorage.setItem('naviNationProgress', oldSaved);
+                localStorage.removeItem('geoTrainProgress');
+                saved = oldSaved;
+            }
+        }
+        
         if (saved) {
             return JSON.parse(saved);
         }
+        
         return {
             statesMastered: [],
             citiesDiscovered: [],
@@ -853,19 +964,26 @@ class GeoTrainGame {
     }
 
     saveProgress() {
-        localStorage.setItem('geoTrainProgress', JSON.stringify(this.progress));
+        localStorage.setItem('naviNationProgress', JSON.stringify(this.progress));
         this.updateProgressDisplay();
     }
 }
 
 // Initialize game when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const game = new GeoTrainGame();
+    const game = new NaviNationGame();
     
     // Check for saved dark mode preference
     const darkMode = localStorage.getItem('darkMode');
     if (darkMode === 'true') {
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-toggle').textContent = '☀️';
+    }
+    
+    // Check for saved sound preference
+    const soundEnabled = localStorage.getItem('soundEnabled');
+    if (soundEnabled === 'false') {
+        game.soundEnabled = false;
+        document.getElementById('sound-toggle').textContent = '🔇';
     }
 });

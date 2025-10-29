@@ -1,8 +1,8 @@
-# 🌍 GeoTrain - Interactive Geography Learning Game for India
+# 🌍 NaviNation - Interactive Geography Learning Game for India
 
 **Master India's Geography Through Interactive Learning**
 
-GeoTrain is a comprehensive educational web application designed to help users learn about India's states, cities, landmarks, and geographical features through interactive map-based games. The application features real open-source maps with satellite and street views, making geography learning engaging and fun.
+NaviNation is a comprehensive educational web application designed to help users learn about India's states, cities, landmarks, and geographical features through interactive map-based games. The application features real open-source maps with satellite and street views, making geography learning engaging and fun.
 
 ## ✨ Features
 
@@ -119,8 +119,8 @@ Complete 12 achievements:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/navuxneeth/GeoTrain.git
-   cd GeoTrain
+   git clone https://github.com/navuxneeth/NaviNation.git
+   cd NaviNation
    ```
 
 2. **Open the application**:
@@ -141,7 +141,7 @@ Complete 12 achievements:
 ## 📁 Project Structure
 
 ```
-GeoTrain/
+NaviNation/
 ├── index.html          # Main HTML structure with enhanced UI
 ├── styles.css          # Styling with dark mode and animations
 ├── app.js             # Game logic, achievements, and features
@@ -189,7 +189,7 @@ GeoTrain/
 
 ## 🎓 Educational Value
 
-GeoTrain helps you learn:
+NaviNation helps you learn:
 - **Geographical Locations**: Where states, cities, landmarks, and features are located
 - **State Capitals**: Capital cities of all Indian states
 - **Population Data**: Demographic information from the 2011 Census
