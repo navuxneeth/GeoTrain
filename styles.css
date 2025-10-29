@@ -44,12 +44,6 @@ body.dark-mode .choice-btn:hover {
     background: #4a4a5a;
 }
 
-/* Screens */
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* Header */
 header {
     background: rgba(255, 255, 255, 0.95);
