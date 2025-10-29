@@ -620,7 +620,8 @@ header h1 {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    animation: fadeIn 0.3s;
+    animation: fadeIn 0.3s forwards;
+    opacity: 1;
 }
 
 .modal.active {
