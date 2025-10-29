@@ -492,7 +492,9 @@ class NaviNationGame {
     resetProgress() {
         if (confirm('Are you sure you want to reset all progress? This cannot be undone!')) {
             localStorage.removeItem('naviNationProgress');
+            localStorage.removeItem('geoTrainProgress'); // Also remove old key if it exists
             localStorage.removeItem('darkMode');
+            localStorage.removeItem('soundEnabled');
             location.reload();
         }
     }
@@ -928,10 +930,24 @@ class NaviNationGame {
     }
 
     loadProgress() {
-        const saved = localStorage.getItem('naviNationProgress');
+        // First try to load from new key
+        let saved = localStorage.getItem('naviNationProgress');
+        
+        // If not found, try to migrate from old key
+        if (!saved) {
+            const oldSaved = localStorage.getItem('geoTrainProgress');
+            if (oldSaved) {
+                // Migrate old data to new key
+                localStorage.setItem('naviNationProgress', oldSaved);
+                localStorage.removeItem('geoTrainProgress');
+                saved = oldSaved;
+            }
+        }
+        
         if (saved) {
             return JSON.parse(saved);
         }
+        
         return {
             statesMastered: [],
             citiesDiscovered: [],
