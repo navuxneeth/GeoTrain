@@ -1,6 +1,7 @@
 # NaviNation - Interactive Geography Learning Game for India
 
-<MAIN WEBSITE DEPLOYMENT IS STILL ~~GOOFY~~ UNDERWAY>
+MAIN WEBSITE DEPLOYMENT IS STILL ~~GOOFY~~ UNDERWAY
+
 **Master India's Geography Through Interactive Learning**
 
 NaviNation is a comprehensive educational web application designed to help users learn about India's states, cities, landmarks, and geographical features through interactive map-based games. The application features real open-source maps with satellite and street views, making geography learning engaging and fun.
