@@ -54,7 +54,7 @@ class NaviNationGame {
         // Game mode selection
         document.querySelectorAll('.game-mode-card button').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const mode = e.target.closest('.game-mode-card').dataset.mode;
+                const mode = btn.closest('.game-mode-card').dataset.mode;
                 this.showDifficultyModal(mode);
             });
         });
@@ -62,7 +62,7 @@ class NaviNationGame {
         // Difficulty selection
         document.querySelectorAll('.difficulty-card button').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const difficulty = e.target.closest('.difficulty-card').dataset.difficulty;
+                const difficulty = btn.closest('.difficulty-card').dataset.difficulty;
                 this.selectDifficulty(difficulty);
             });
         });
